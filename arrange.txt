@@ -1,0 +1,26 @@
+
+
+web : html css javascript 우선순위 3
+인공지능 : python mysql 우선순위 1
+모바일앱 : unity php mysql 우선순위 2
+
+process
+
+1.주식 예측 딥러닝을 위해 필요한 정보
+ - 논문 참조할 것
+ - 베타버전 입력값 결정
+
+1-2. 파이썬 웹 크롤링 프로그램 작성
+ - 네이버 증권에서 긁어오기
+ - mysql에 내용 저장하기 
+ 
+2. 파이썬 딥러닝(회귀분석) 작성
+ - 오픈소스 및 책 참조할 것
+
+3. 유니티 php 이용해서 mysql 정보 가져와 안드앱에표시
+
+4. mysql 정보를 웹에 표시 html css javascript
+
+5. 웹 내용을 aws으로 이식
+
+6. python 딥러닝 알고리즘 계속 업데이트
