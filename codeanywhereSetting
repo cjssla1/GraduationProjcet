@@ -1,0 +1,28 @@
+nano 에디터로 Apache 웹서버가 동작하는 방법을 변경하기 위해서 설정 파일을 편집합니다. 
+
+sudo nano /etc/apache2/sites-enabled/000-default.conf
+ 
+
+Document root(웹서버가 요청한 파일을 찾는 최상위 디렉토리)에 있는 파일 중 확장자가 py인 파일은 Python으로서 실행 되도록 합니다. 추가한 내용은 4~7행입니다. 
+11~14줄 추가
+<VirtualHost *:80 *:3000>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /home/cabox/workspace
+        <Directory /home/cabox/workspace>
+                AddHandler cgi-script .py
+                Options ExecCGI
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+ 
+
+cgi가 동작하도록 cgi 기능을 켭니다. 
+sudo a2enmod cgi
+ 
+
+웹서버를 재시작합니다. 
+sudo service apache2 restart
+
+py 파일 접근 권한 준다.
+sudo chmod a+x helloworld.py
