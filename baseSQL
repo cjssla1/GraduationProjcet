@@ -1,0 +1,19 @@
+https://ljs93kr.tistory.com/42 파이썬 + 리눅스 + mysql
+
+mysql 서버 설치
+sudo apt-get install mysql-server
+
+mysql client와 각종 라이브러리
+sudo apt-get install mysql-client mysql-common libmysqlclient-dev
+
+설치된 mysql 버전
+mysqladmin -uroot -p version
+
+mysql 접속
+mysql -uroot -p
+
+db 확인
+show databases;
+
+msyql - python 라이브러리 다운로드
+sudo apt-get install python-mysqldb
