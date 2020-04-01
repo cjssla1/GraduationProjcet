@@ -3,7 +3,6 @@ from selenium.webdriver.common.keys import Keys
 import datetime
 
 driver = webdriver.PhantomJS('C:/Users/SAMSUNG/Downloads/phantomjs-2.1.1-windows/bin/phantomjs.exe')
-#현재 첫 페이지만 크롤링함
 driver.get("https://finance.naver.com/sise/sise_market_sum.nhn")
 
 #페이지가 동적이라 스위치 눌러줘야함, 필요한 부분 선택하고
