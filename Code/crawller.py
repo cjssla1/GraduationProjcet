@@ -19,36 +19,40 @@ driver.find_element_by_css_selector('#option12').click()
 #적용하기 버튼
 driver.find_element_by_css_selector('#contentarea_left > div.box_type_m > form > div > div > div > a:nth-child(1)').click()
 
-#주식 이름
-names = driver.find_elements_by_css_selector('a.tltle')
-#수치들 
-numbers = driver.find_elements_by_css_selector('td.number')
+#1페이지부터 32페이지까지 총 1562개 주식정보
+for idx in range(1,33):
+    url = 'https://finance.naver.com/sise/sise_market_sum.nhn?&page='+str(idx)
+    driver.get(url)
+    #주식 이름
+    names = driver.find_elements_by_css_selector('a.tltle')
+    #수치들 
+    numbers = driver.find_elements_by_css_selector('td.number')
 
-#수치 줄로 엮기
-lines = []
-line = [numbers[0].text]
-#날짜 추가용
-today = datetime.datetime.today()
-td = today.strftime('%Y-%m-%d')
-x = 0 #이름 가져오기 위함
+    #수치 줄로 엮기
+    lines = []
+    line = [numbers[0].text]
+    #날짜 추가용
+    today = datetime.datetime.today()
+    td = today.strftime('%Y-%m-%d')
+    x = 0 #이름 가져오기 위함
 
-for i in range(1,len(numbers)):
-    #줄 바꿈
-    if i % 8 == 0:
-        #종목 이름,날짜 추가
-        line.append(names[x].text)
-        x+=1
-        line.append(td)
-        lines.append(line)
-        line = [numbers[i].text]
-    elif i % 8 >= 1 and i % 8 <= 3:
-        #불필요 제거
-        continue
-    else:
-        line.append(numbers[i].text)
+    for i in range(1,len(numbers)):
+        #줄 바꿈
+        if i % 8 == 0:
+            #종목 이름,날짜 추가
+            line.append(names[x].text)
+            x+=1
+            line.append(td)
+            lines.append(line)
+            line = [numbers[i].text]
+        elif i % 8 >= 1 and i % 8 <= 3:
+            #불필요 제거
+            continue
+        else:
+            line.append(numbers[i].text)
 
 
-print(lines)
+    print(lines)
 
 driver.quit()
 
