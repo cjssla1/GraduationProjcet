@@ -1,0 +1,50 @@
+https://cornswrold.tistory.com/159 원본
+
+sudo apt-get install apache2
+
+만약에 에러가 뜬다면 appstore를 최신으로 만들어야 한다.
+
+sudo apt-get update
+
+update를 받은 후 다시 install을 실행
+
+
+
+apache2가 정상적으로 설치되었는지 확인하려면, 아래와 같은 명령어를 사용한다.
+
+apache2 -v
+
+정상적으로 설치가 됬으면 apache2의 버전정보가 출력될 것이다.
+
+
+
+apache2 구동 명령어는 아래와 같다.
+
+sudo service apache2 restart // 재시작
+sudo service apache2 start   // 시작
+sudo service apache2 stop    // 멈춤
+
+
+apache2가 동작하는 것을 확인하고 싶으면 netstat 를 사용한다.
+
+netstat -ntlp
+
+Apache 홈디렉터리 변경
+
+apache의 홈디렉터리를 변경하고 싶으면 /etc/apache2/sites-available/000-default.conf에서 DocumentRoot를 설정해주어야한다.
+
+
+
+처음에 conf파일을 열면 기본으로 /var/www/html이 설정되어 있을 텐데, 해당 부분을 주석하고 자신이 만든 홈디렉터리를 입력한다. (임의로 /home/ubuntu/apache_home 으로 잡아놓음)
+
+그런데 이렇게 설정 후 저장을 하고, 바뀐 url로 접속을 하면 아마 permission 에러 때문에 forbidden이 뜰 것이다.
+
+/etc/apache2/apache2.conf 파일을 확인해서 아래와 같은 부분을 변경해 주자
+
+
+<Directory />
+    AllowOverride None
+    Require all granted (denied를 granted로 수정)
+</Directory>
+
+그 후 apache를 restart 후 접속해보면, 설정한 홈디렉토리의 있는 html을 정상적으로 읽는 것을 확인할 수 있다.
