@@ -26,3 +26,6 @@ sudo service apache2 restart
 
 py 파일 접근 권한 준다.
 sudo chmod a+x helloworld.py
+
+아파치 웹서버 오류 출력(모니터링)
+tail -f /var/log/apache2/error.log
