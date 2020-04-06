@@ -1,10 +1,10 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
+import myDBlib
 import datetime
 
 options = webdriver.FirefoxOptions()
-options.add_argument('-headless')
+options.add_argument('--headless')
 driver = webdriver.Firefox(firefox_options=options)
 driver.get("https://finance.naver.com/sise/sise_market_sum.nhn")
 
@@ -22,7 +22,7 @@ driver.find_element_by_css_selector('#option12').click()
 driver.find_element_by_css_selector('#contentarea_left > div.box_type_m > form > div > div > div > a:nth-child(1)').click()
 
 #1페이지부터 32페이지까지 총 1562개 주식정보
-for idx in range(1,33):
+for idx in range(1,2):
     url = 'https://finance.naver.com/sise/sise_market_sum.nhn?&page='+str(idx)
     driver.get(url)
     #주식 이름
@@ -31,7 +31,6 @@ for idx in range(1,33):
     numbers = driver.find_elements_by_css_selector('td.number')
 
     #수치 줄로 엮기
-    lines = []
     line = [numbers[0].text]
     #날짜 추가용
     today = datetime.datetime.today()
@@ -45,7 +44,17 @@ for idx in range(1,33):
             line.append(names[x].text)
             x+=1
             line.append(td)
-            lines.append(line)
+
+            #숫자 형변환
+            for j in range(0,5):
+                line[j] = int(line[j].replace(',',''))
+            
+            #DB 삽입
+            dbc = myDBlib.DBcon('localhost','admin','1234','stock')
+            dbc.sendtoDB(
+                line[5],line[0],line[2],line[3],line[4],line[1],line[6])
+            #
+
             line = [numbers[i].text]
         elif i % 8 >= 1 and i % 8 <= 3:
             #불필요 제거
@@ -54,7 +63,4 @@ for idx in range(1,33):
             line.append(numbers[i].text)
 
 
-    print(lines)
-
 driver.quit()
-
