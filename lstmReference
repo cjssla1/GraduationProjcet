@@ -3,8 +3,11 @@ MLP 및 LSTM 참조할 글
 lstm 예시
 http://www.hanbit.co.kr/media/channel/view.html?cms_code=CMS6074576268
 
-아마존 주가 예측
+텐서플로우롤 활용한 lstm 아마존 주가 예측
 https://m.blog.naver.com/wideeyed/221160038616
 
-파이토치를 활용한 Rnn,lstm 예제
+파이토치를 활용한 Rnn 예제
 https://wingnim.tistory.com/37
+
+케라스를 활용한 lstm 주식 예측, 강화학습 추가
+https://keraskorea.github.io/posts/2018-10-25-Keras%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EC%A3%BC%EC%8B%9D%20%EA%B0%80%EA%B2%A9%20%EC%98%88%EC%B8%A1/
