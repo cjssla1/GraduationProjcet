@@ -11,3 +11,10 @@ sudo nano 000-default.conf
 </Directory>
 
 4.변경된 파일을 저장한다.
+
+5.아파치의 cgi 기능을 킨다.
+sudo a2enmod cgi
+
+6.아파치를 다시 킨다.
+sudo service apache2 restart
+
