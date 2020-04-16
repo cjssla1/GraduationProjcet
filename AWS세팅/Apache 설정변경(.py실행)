@@ -1,0 +1,13 @@
+1.아파치의 환경설정 페이지로 간다.
+cd /etc/apache2/sites-enabled
+
+2.환경설정 파일을 연다.
+sudo nano 000-default.conf
+
+3.열린 파일의 DocumentRoot /var/www/html 의 아래에 다음을 삽입한다.
+<Directory /var/www/html> # html 파일이 저장되는 문서 루트와 같은 루트을 넣어주면됨
+  AddHandler cgi-script.py
+  Options ExecCGI
+</Directory>
+
+4.변경된 파일을 저장한다.
