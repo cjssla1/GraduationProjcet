@@ -1,0 +1,7 @@
+npm으로 모듈 설치 전에는
+npm init
+먼저 필수
+
+
+path 기능을 이용해서 보안
+https://www.youtube.com/watch?v=xZztZWYuoo0&list=PLuHgQVnccGMA9QQX5wqj6ThK7t2tsGxjm&index=56
