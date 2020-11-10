@@ -1,0 +1,10 @@
+key파일이 있는 곳에서
+
+서버 접속 
+ssh -i "projectjukeraws.pem" ubuntu@ec2-3-35-218-43.ap-northeast-2.compute.amazonaws.com
+
+폴더 옮기기
+scp -i "projectjukeraws.pem" -r C:\Users\89kkl\Desktop\capston ubuntu@ec2-3-35-218-43.ap-northeast-2.compute.amazonaws.com:~/capston
+
+파일 옮기기
+scp -i "projectjukeraws.pem" C:\Users\89kkl\Desktop\capston ubuntu@ec2-3-35-218-43.ap-northeast-2.compute.amazonaws.com:~/capston
